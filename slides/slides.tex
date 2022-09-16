@@ -1,0 +1,344 @@
+%! tex program = xelatex
+\documentclass[aspectratio=43]{beamer}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mdframed}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks = true, linkcolor = black}
+
+\usetheme{default}
+
+\title{\LaTeX \ Workshop}
+\author{Theodore Nguyen}
+\date{September 15th, 2022}
+
+\beamertemplatenavigationsymbolsempty
+\setbeamercovered{invisible}
+
+\begin{document}
+
+\begin{frame}{}{}
+    \maketitle
+\end{frame}
+
+\begin{frame}{A Little Bit About Me}{}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \begin{itemize}
+                \item LQ Class of 2019
+                \item UCLA Applied Math with a Specialization in Computing
+                \item Tennis
+            \end{itemize}
+        \column{0.5\textwidth}
+            \includegraphics[width = 2.75in, angle = 270]{me.jpeg}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{What is \LaTeX?}
+    \begin{center}
+        \begin{itemize}
+            \item<2-> {\Large Typesetting system that is widely used in academia
+                to create professional-looking documents}
+            \item<2->
+                {\Large \href{https://github.com/theodoretnguyen/latex-workshop}{Examples
+                (click here)}}
+        \end{itemize}
+        \medskip
+
+    \end{center}
+\end{frame}
+
+\begin{frame}{Workshop Outline}
+    \tableofcontents
+\end{frame}
+
+\section{1. Creating and Using Overleaf}
+\begin{frame}{1. Creating and Using Overleaf}{What is Overleaf}
+\begin{itemize}
+    \item Collaborative and cloud-based (think Google Docs!)
+    \item Removes the need for you to install \LaTeX \ on your device
+\end{itemize}
+\end{frame}
+
+\begin{frame}{1. Creating and Using Overleaf}{Setting up an Overleaf Account}
+\begin{enumerate}
+    \item Go to \url{www.overleaf.com} and click ``Register'' in the top right
+        corner
+    \item Enter an email and password
+    \item Click ``Create First Project $\rightarrow$ Blank Project'' and name
+        it!
+\end{enumerate}
+\end{frame}
+
+\section{2. Basic \LaTeX \ Document Setup}
+\begin{frame}[fragile]{2. Basic \LaTeX \ Document Setup}
+\begin{center}
+\begin{verbatim}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Example}
+\author{theodoretnguyen}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\end{document}
+\end{verbatim}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{2. Basic \LaTeX \ Document Setup}{Breakdown}
+    \begin{enumerate}
+        \item<1-> \verb|\documentclass{article}|
+            \begin{itemize}
+                \item Type of document
+            \end{itemize}
+        \item<2-> \verb|\usepackage[utf8]{inputenc}|
+            \begin{itemize}
+                \item Use \verb|\usepackage{}| for adding packages
+            \end{itemize}
+        \item<3->
+            \begin{verbatim}
+                \title{Example}
+                \author{theodoretnguyen}
+                \date{September 2022}
+            \end{verbatim}
+            \begin{itemize}
+                \item Title, author, date (preamble)
+            \end{itemize}
+        \item<4-> \verb|\begin{document}|
+            \begin{itemize}
+                \item Begins the actual document
+            \end{itemize}
+        \item<5-> \verb|\maketitle|
+            \begin{itemize}
+                \item Shows title, author, date
+            \end{itemize}
+        \item<6-> \verb|\section{Introduction}|
+            \begin{itemize}
+                \item Begins a new section with the name \verb|Introduction|
+            \end{itemize}
+        \item<7-> \verb|\end{document}|
+            \begin{itemize}
+                \item Ends the document. Nothing goes after this line.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\section{3. Formatting Your Document}
+\begin{frame}[fragile]{3. Formatting Your Document}{Local Settings Throughout
+    Your Document}
+    \begin{columns}
+        \column{0.75\textwidth}
+        \begin{itemize}
+            \item[]<1-> {\Large Local Font Size}
+                \begin{itemize}
+                    \item Sizing changes can be contained in braces \verb|{}|
+                        \begin{itemize}
+                            \item<1-> Example: \verb|{\tiny hello}|
+                                $\rightarrow$ {\tiny hello}
+                        \end{itemize}
+                \end{itemize}
+            \item[]<2-> {\Large Text Styling}
+                \begin{itemize}
+                    \item Italics : \verb|\textit{hello}| $\rightarrow$
+                        \textit{hello}
+                    \item Bold : \verb|\textbf{hello}| $\rightarrow$
+                        \textbf{hello}
+                    \item Underline : \verb|\underline{hello}| $\rightarrow$
+                        \underline{hello}
+                \end{itemize}
+        \end{itemize}
+        \column{0.25\textwidth}
+            \includegraphics[width = 0.75in]{font-sizes.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{}{}
+    \begin{center}
+        {\Huge Exercise 1}
+    \end{center}
+\end{frame}
+
+\section{4. Math Mode and Text Mode}
+\begin{frame}[fragile]{4. Math Mode and Text Mode}{}
+    \begin{itemize}
+        \item<1-> The text that you have been writing in the document's body is
+            in \textbf{text mode}.
+        \item<1-> To go into \textbf{math mode}, type your math between a pair
+            of dollar signs.
+            \begin{itemize}
+                \item<1-> It is also worthwhile to include \verb|amsmath| and
+                    \verb|amsfonts| packages.
+            \end{itemize}
+        \item<1-> Example:
+\begin{mdframed}
+\begin{verbatim}
+$E = mc^2$ is cool, but $e^{i \pi} + 1 = 0$
+is cooler.
+\end{verbatim}
+        \begin{exampleblock}{Output:}<2->
+            $E = mc^2$ is cool, but $e^{i \pi} + 1 = 0$ is cooler.
+        \end{exampleblock}
+\end{mdframed}
+    \end{itemize}
+\end{frame}
+
+\section{5. Common Math Symbols and Commands}
+\begin{frame}[fragile]{5. Common Math Symbols and Commands}{}
+    {\small
+    \begin{center}
+        \begingroup
+        \setlength{\tabcolsep}{8pt}
+        \renewcommand{\arraystretch}{1.5}
+            \begin{tabular}{| l | r |}
+                \hline
+                \verb|\leq|                & $\leq$                \\\hline
+                \verb|\geq|                & $\geq$                \\\hline
+                \verb|x^2|                 & $x^2$                 \\\hline
+                \verb|A_1|                 & $A_1$                 \\\hline
+                \verb|\alpha|              & $\alpha$              \\\hline
+                \verb|\mu|                 & $\mu$                 \\\hline
+                \verb|\sum_{n=1}^{\infty}| & $\sum_{n=1}^{\infty}$ \\\hline
+                \verb|\int_{a}^{b}|        & $\int_{a}^{b}$        \\\hline
+                \verb|\frac{a}{b}|         & $\frac{a}{b}$         \\\hline
+                \verb|\sqrt{x}|            & $\sqrt{x}$            \\\hline
+                \verb|\pm|                 & $\pm$                 \\\hline
+                \verb|\sin|                & $\sin$                \\\hline
+            \end{tabular}
+        \endgroup
+    \end{center}}
+\end{frame}
+
+\begin{frame}{}{}
+    \begin{center}
+        {\Huge Exercise 2}
+    \end{center}
+\end{frame}
+
+\section{6. Useful Applications for \LaTeX}
+\begin{frame}{6. Useful Applications for \LaTeX}{Detexify}
+    \url{https://detexify.kirelabs.org/classify.html}
+
+    \medskip
+
+    See or know a symbol and don’t know what its command would be in \LaTeX?
+
+    Draw it on your computer and Detexify will guess for you!
+    \begin{center}
+        \includegraphics[scale = 0.25]{detexify.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{6. Useful Applications for \LaTeX}{Mathpix}
+    \url{https://mathpix.com/}
+
+    \medskip
+
+    Take a screenshot of a \LaTeX \ PDF and this application instantly writes
+    the commands out for you!
+    \begin{center}
+        \includegraphics[width = 4in]{mathpix.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{6. Useful Applications for \LaTeX}{Mathb.in}
+    \url{http://mathb.in/}
+
+    \medskip
+
+    If you want to share LaTeX with your friends but don’t feel like typing up
+    an entire Overleaf document, use this application to share quick excerpts!
+    \begin{center}
+        \includegraphics[width = 2.5in]{mathbin.png}
+    \end{center}
+\end{frame}
+
+\section{7. Utilizing Common Environments}
+\begin{frame}[fragile]{7. Utilizing Common Environments}{Math Mode Environments:
+    equation}
+    \begin{itemize}
+        \item<1-> \verb|equation|: one line of math
+            \begin{itemize}
+                \item<1-> Example:
+\begin{mdframed}
+\begin{verbatim}
+\begin{equation}
+    e^{i \pi} + 1 = 0
+\end{equation}
+\end{verbatim}
+        \begin{exampleblock}{Output:}<2->
+            \begin{equation}
+                e^{i \pi} + 1 = 0
+            \end{equation}
+        \end{exampleblock}
+\end{mdframed}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}{}
+    \begin{center}
+        {\Huge Exercise 3}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{7. Utilizing Common Environments}{Math Mode Environments:
+    align}   \begin{itemize}
+        \item \verb|align|: aligns multiple lines of math using \& sign
+            \begin{itemize}
+                \item<1-> Example:
+\begin{mdframed}
+\begin{verbatim}
+\begin{align}
+    x + 2x + 3x &= 12 \\
+             6x &= 12 \\
+              x &= 2
+\end{align}
+\end{verbatim}
+        \begin{exampleblock}{Output:}<2->
+            \begin{align}
+                x + 2x + 3x &= 12 \\
+                         6x &= 12 \\
+                          x &= 2
+            \end{align}
+        \end{exampleblock}
+\end{mdframed}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}{}
+    \begin{center}
+        {\Huge Exercise 4}
+    \end{center}
+\end{frame}
+
+\section{8. Other Resources}
+\begin{frame}{8. Other Resources}{}
+    \begin{itemize}
+        \item \href{https://www.overleaf.com/learn}{Overleaf Documentation}
+        \item \href{https://katex.org/docs/supported.html}{Extensive List of
+            Symbols}
+        \item \href{https://www.michellekrummel.com/tutorials}{Ms. Krummel}
+        \item
+            \href{https://www.youtube.com/playlist?list=PL-p5XmQHB_JSQvW8_mhBdcwEyxdVX0c1T}{Luke
+            Smith}
+    \end{itemize}
+\end{frame}
+
+\section{9. Questions, Comments, Concerns?}
+\begin{frame}[fragile]{9. Questions, Comments, Concerns?}{}
+    \begin{center}
+        Contact: \verb|theodoretnguyen@g.ucla.edu|
+    \end{center}
+\end{frame}
+
+\end{document}
