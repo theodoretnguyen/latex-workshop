@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath, amsfonts}
+\usepackage{hyperref}
+
+\title{\LaTeX{} Workshop Worksheet}
+\author{Theodore Nguyen}
+\date{September 15th, 2022}
+
+\begin{document}
+
+    \section*{Exercise 1}
+    \addcontentsline{toc}{section}{Exercise 1}
+    \begin{mdframed}
+        \begin{itemize}
+            \item Local Font Size
+                \begin{itemize}
+                    \item Sizing changes can be contained in braces \verb|{}|
+                        \begin{itemize}
+                            \item {\tiny \verb|\tiny|}, {\scriptsize
+                                \verb|\scriptsize|}, {\footnotesize
+                                \verb|\footnotesize|}, {\small \verb|\small|}
+                            \item {\large \verb|\large|}, {\Large
+                                \verb|\Large|},
+                                {\LARGE \verb|\LARGE|}, {\huge \verb|\huge|},
+                                {\Huge \verb|\Huge|}
+                            \begin{itemize}
+                                \item Example: \verb|{\tiny hello}|
+                                    $\rightarrow$ {\tiny hello}
+                            \end{itemize}
+                        \end{itemize}
+                \end{itemize}
+            \item Text Styling
+                \begin{itemize}
+                    \item Italics : \verb|\textit{hello}| $\rightarrow$
+                        \textit{hello}
+                    \item Bold : \verb|\textbf{hello}| $\rightarrow$
+                        \textbf{hello}
+                    \item Underline : \verb|\underline{hello}| $\rightarrow$
+                        \underline{hello}
+                \end{itemize}
+        \end{itemize}
+    \end{mdframed}
+    \begin{mdframed}
+        Introduce yourself in the following format:
+
+        \bigskip
+
+        {\Huge Hi}, my name is [\textbf{last name}], [\textit{first name}]. I am
+        a [\underline{year name}] in the graduating \tiny{class of}
+        [\tiny{year}].
+    \end{mdframed}
+
+    \section*{Exercise 2}
+    \addcontentsline{toc}{section}{Exercise 2}
+    \begin{mdframed}
+        \begin{itemize}
+            \item To go into \textbf{math mode}, type your math between a pair
+                of dollar signs.
+                \begin{itemize}
+                    \item It is also worthwhile to include \verb|amsmath| and
+                        \verb|amsfonts| packages.
+                \end{itemize}
+        \end{itemize}
+        \begin{center}
+            \begingroup
+            \setlength{\tabcolsep}{8pt}
+            \renewcommand{\arraystretch}{1.5}
+                \begin{tabular}{| l | r | l | r |}
+                    \hline
+                    \verb|\leq|   & $\leq$   & \verb|\sum_{n=1}^{\infty}| & $\sum_{n=1}^{\infty}$ \\\hline
+                    \verb|\geq|   & $\geq$   & \verb|\int_{a}^{b}|        & $\int_{a}^{b}$        \\\hline
+                    \verb|x^2|    & $x^2$    & \verb|\frac{a}{b}|         & $\frac{a}{b}$         \\\hline
+                    \verb|A_1|    & $A_1$    & \verb|\sqrt{x}|            & $\sqrt{x}$            \\\hline
+                    \verb|\alpha| & $\alpha$ & \verb|\pm|                 & $\pm$                 \\\hline
+                    \verb|\mu|    & $\mu$    & \verb|\sin|                & $\sin$                \\\hline
+                \end{tabular}
+            \endgroup
+        \end{center}
+    \end{mdframed}
+    \begin{mdframed}
+        Try typing out the following math equations/expressions:
+        \begin{enumerate}[1)]
+            \item $y = mx + b$
+            \item $F_s = \mu_s N$
+            \item $a^2 + b^2 = c^2$
+            \item $\sin^2 x + \cos^2 x = 1$
+            \item $\int_a^a f(x)\,dx = 0$
+            \item $\sum_{n=1}^5 n = 15$
+            \item \underline{Challenge:} $x = \frac{-b \pm \sqrt{b^2 -
+                4ac}}{2a}$
+        \end{enumerate}
+    \end{mdframed}
+
+\pagebreak
+
+    \section*{Exercise 3}
+    \addcontentsline{toc}{section}{Exercise 3}
+    \begin{mdframed}
+\begin{verbatim}
+\begin{equation}
+    e^{i \pi} + 1 = 0
+\end{equation}
+\end{verbatim}
+    \end{mdframed}
+    \begin{mdframed}
+        Try using the \verb|equation| environment to type out:
+        \begin{equation}
+            ax^2 + bx + c = 0
+        \end{equation}
+    \end{mdframed}
+
+
+    \section*{Exercise 4}
+    \addcontentsline{toc}{section}{Exercise 4}
+    \begin{mdframed}
+\begin{verbatim}
+\begin{align}
+    x + 2x + 3x &= 12 \\
+             6x &= 12 \\
+              x &= 2
+\end{align}
+\end{verbatim}
+    \end{mdframed}
+    \begin{mdframed}
+        Try using the \verb|align| environment to type out:
+        \begin{align}
+            a + 2a + 3b + 4b &= 20 \\
+            3a + 3b + 4b &= 20 \\
+            3a + 7b &= 20
+        \end{align}
+    \end{mdframed}
+
+\end{document}
