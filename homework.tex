@@ -1,0 +1,325 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage[margin = 0.8in]{geometry}
+\geometry{letterpaper}
+\linespread{1.2}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}} 
+\newcommand{\QQ}{\mathbb{Q}}
+
+\newcommand\set[1]{\left\lbrace #1 \right\rbrace}
+\newcommand\abs[1]{\left| #1 \right|}
+\newcommand\parens[1]{\left( #1 \right)}
+\newcommand\brac[1]{\left[ #1 \right]}
+
+\newcommand\sol[1]{\begin{mdframed}
+\emph{Solution.} #1
+\end{mdframed}}
+
+\newcommand\solproof[1]{\begin{mdframed}
+\begin{proof} #1
+\end{proof}
+\end{mdframed}}
+
+\begin{document}
+\noindent Theodore Nguyen \hfill  Due Date: 04/18/2022
+
+\begin{center}
+  {\Huge Math 120A Homework 3}
+\end{center}
+
+\section*{Problem 1.3.2}
+Consider a regular curve $q(t)$ with arclength parameter $s$. Show that if $T$ is regular at $t_0$, then
+\[1 = \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}\] 
+and
+\[\kappa\parens{t_0} = \lim_{t \rightarrow t_0} \frac{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}{\abs{s\parens{t} - s\parens{t_0}}}.\] 
+Hint: Use exercise 1 from section 1.2.
+
+\solproof{
+    Since $T$ is defined to be the unit tangent, $|T| = 1$. So, $\theta(t)$ is the arclength parameter. Then from Problem 1.2.1(e), we have the following:
+    \[1 \leq \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\arccos\parens{T\parens{t} - T\parens{t_0}}} \leq \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\abs{T\parens{t} - T\parens{t_0}}}.\]
+    Now, we have that $\frac{dT}{dt}\parens{t_0} = \abs{\frac{dT}{dt}\parens{t_0}} \neq 0$ since we are given that $T$ is regular at $t_0$. Thus, $\abs{\frac{dT}{dt}\parens{t_0}} > $. Then from Problem 1.2.1(d), we have the following:
+    \[1 = \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\abs{T\parens{t} - T\parens{t_0}}}.\]
+    So, we have the following:
+    \[1 = \lim_{t \rightarrow t_0} 1 \leq \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\arccos\parens{T\parens{t} - T\parens{t_0}}} \leq \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\abs{T\parens{t} - T\parens{t_0}}} = 1.\]
+    Therefore, by the squeeze theorem,
+    \[1 = \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}.\]
+    Now, we show $\kappa\parens{t_0}$. From the first part, we have that:
+    \[1 = \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}} = \lim_{t \rightarrow t_0} \frac{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}{\abs{\theta\parens{t} - \theta\parens{t_0}}}\]
+    By the definition of the derivative, we have:
+    \[\frac{d\theta}{dt}\parens{t_0} = \abs{\frac{d\theta}{dt}\parens{t_0}} = \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\abs{t - t_0}}.\]
+    Now, we have that:
+    \[\frac{d\theta}{dt}\parens{t_0} \cdot 1 = \lim_{t \rightarrow t_0} \frac{\abs{\theta\parens{t} - \theta\parens{t_0}}}{\abs{t - t_0}} \cdot \frac{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}{\abs{\theta\parens{t} - \theta\parens{t_0}}} = \lim_{t \rightarrow t_0} \frac{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}{\abs{t - t_0}}.\]
+    Then, by definition of curvature, $\kappa = \frac{d\theta}{ds} = \frac{dt}{ds}\frac{d\theta}{dt}$. So, we have the following:
+    \begin{align*}
+        \kappa\parens{t_0} &= \frac{d\theta}{ds}\parens{t_0} \\
+        &= \frac{dt}{ds}\parens{t_0}\frac{d\theta}{dt}\parens{t_0} \\
+        &= \lim_{t \rightarrow t_0} \frac{\abs{t - t_0}}{\abs{s\parens{t} - s\parens{t_0}}} \cdot \frac{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}{\abs{t - t_0}} \\
+        &= \lim_{t \rightarrow t_0} \frac{\arccos\parens{T\parens{t} \cdot T\parens{t_0}}}{\abs{s\parens{t} - s\parens{t_0}}}.
+    \end{align*}
+}
+
+\section*{Problem 1.3.3}
+Show that for vectors $v, w \in \RR^n$ we have
+\begin{align*}
+    \text{area of parallelogram}\parens{v,w} &= \sqrt{\abs{v}^2\abs{w}^2 - \parens{v \cdot w}^2} \\
+    &= \abs{v}\abs{w} \sin \measuredangle \parens{v,w}.
+\end{align*}
+
+\solproof{
+    Let $v, w \in R^n$. By the definition of the area of a parallelogram, we have:
+    \[\text{area of parallelogram}\parens{v,w} = \abs{w}\abs{v - \parens{v \cdot w} \frac{w}{\abs{w}^2}}\]
+    Square both sides and simplify:
+    \begin{align*}
+        \text{area}^2 &= \abs{w}^2 \abs{v - \parens{v \cdot w} \frac{w}{\abs{w}^2}}^2 \\
+        &= \abs{w}^2 \parens{v - \parens{v \cdot w} \frac{w}{\abs{w}^2}} \cdot \parens{v - \parens{v \cdot w} \frac{w}{\abs{w}^2}} \\
+        &= \abs{w}^2 \parens{\abs{v}^2 - 2 \frac{\parens{v \cdot w}^2}{\abs{w}^2} + \parens{v \cdot w}^2 \frac{\abs{w}^2}{\abs{w}^4}} \\
+        &= \abs{w}^2 \parens{\abs{v}^2 - 2 \frac{\parens{v \cdot w}^2}{\abs{w}^2} + \frac{\parens{v \cdot w}^2}{\abs{w}^2}} \\
+        &= \abs{w}^2 \parens{\abs{v}^2 - \frac{\parens{v \cdot w}^2}{\abs{w}^2}} \\
+        &= \abs{v}^2 \abs{w}^2 - \parens{v \cdot w}^2
+    \end{align*}
+    Thus, we have:
+    \[\boxed{\text{area of parallelogram}\parens{v,w} = \sqrt{\abs{v}^2\abs{w}^2 - \parens{v \cdot w}^2}}\]
+    Since $(v \cdot w)^2 = \abs{v}\abs{w}\cos\theta$, where $\theta = \measuredangle\parens{v,w}$, we have:
+    \[\text{area} = \sqrt{|v|^2|w|^2 - (\abs{v}\abs{w}\cos\theta)^2}, \quad \theta = \measuredangle\parens{v,w}\]
+    Simplify:
+    \begin{align*}
+        \text{area} &= \sqrt{\abs{v}^2\abs{w}^2 - \abs{v}^2\abs{w}^2\cos^2\theta} \\
+        &= \sqrt{\abs{v}^2\abs{w}^2 - \abs{v}^2\abs{w}^2\parens{1 - \sin^2\theta}} \\
+        &= \sqrt{\abs{v}^2\abs{w}^2 - \abs{v}^2\abs{w}^2 + \abs{v}^2\abs{w}^2\sin^2\theta} \\
+        &= \sqrt{\abs{v}^2\abs{w}^2\sin^2\theta} \\
+        &= \abs{v}\abs{w}\sin\theta \\
+    \end{align*}
+    Hence,
+    \[\boxed{\text{area} = \abs{v}\abs{w}\sin \measuredangle\parens{v, w}}\]
+}
+
+\section*{Problem 1.3.8}
+Give examples of regular curves $q(t) : (a,b) \rightarrow \RR^n$ with $|q(t)| \geq R$ for all $t$, $|q(t_0)| = R$, and $\kappa(t_0) = c$ for any $c \geq 0$.
+
+\sol{
+    Suppose we have a smaller circle with radius $r = \frac{1}{c}$ that is (outside) tangential to a larger circle with radius $R$ ($\abs{q(t)} \geq R$). Since the smaller circle is tangential to the larger circle, suppose the smaller circle intersects the larger circle such that $\abs{q(t_0)} = R$. Then the curvature of this smaller circle is given by $\kappa\parens{t_0} = \frac{1}{\text{radius}} = c > 0$. Now, let there be a tangential straight line outside the larger circle with radius $R$ that intersects the larger circle at $t_1$. Then $K(t_1) = 0$, and the conditions in the problem statement are satisfied.
+}
+
+\section*{Problem 1.3.10}
+Let $q(t) = r(t)(\cos t, \sin t)$. Show that the speed is given by 
+\[\parens{\frac{ds}{dt}}^2 = \parens{\frac{dr}{dt}}^2 + r^2\]
+and the curvature
+\[\kappa = \frac{\abs{2\parens{\frac{dr}{dt}}^2 + r^2 - r \frac{d^2r}{dt^2}}}{\parens{\parens{\frac{dr}{dt}}^2 + r^2}^{\frac{3}{2}}}.\]
+
+\solproof{
+    Taking the derivative of $q(t)$ with respect to $t$:
+    \[\dot{q}(t) = \dot{r}\parens{\cos t,\; \sin t} + r(- \sin t,\; \cos t).\]
+    Then, we have that 
+    \[\parens{\frac{ds}{dt}}^2 = \abs{\dot{q}}^2 = \parens{\dot{r}}^2 + \parens{r}^2 = \parens{\frac{dr}{dt}}^2 + r^2.\]
+    Now, we proceed to showing the curvature. From Remark 1.3.4, we have the following formula for curvature:
+    \begin{equation*}\label{eq:1.3.10}\tag{eq. 1.3.10}
+        \kappa = \frac{\abs{v \times a}}{\abs{v}^3} = \frac{\abs{\dot{q} \times \ddot{q}}}{\abs{\dot{q}}^3}
+    \end{equation*}
+    Computing $\dot{q}$, we have:
+    \begin{align*}
+        \dot{q} &= \dot{r}\parens{\cos t,\; \sin t,\; 0} + r\parens{-\sin t,\; \cos t,\; 0} \\
+        &= \parens{\dot{r}\cos t - r\sin t,\; \dot{r}\sin t + r\cos t,\; 0}
+    \end{align*}
+    Computing $\ddot{q}$, we have:
+    \begin{align*}
+        \ddot{q} &= \parens{\ddot{r} - r}\parens{\cos t,\; \sin t,\; 0} + 2\dot{r}\parens{-\sin t,\; \cos t,\; 0} \\
+        &= \parens{\parens{\ddot{r}-r}\cos t - 2\dot{r}\sin t,\; \parens{\ddot{r} - r}\sin t + 2\dot{r}\cos t,\; 0}
+    \end{align*}
+    Now we compute $\dot{q} \times \ddot{q}$. Since the $z$-component of both $\dot{q}$ and $\ddot{q}$ are $0$, then the $x$ and $y$ components of $\dot{q} \times \ddot{q}$ are $0$. So, we need to compute the $z$-component of $\dot{q} \times \ddot{q}$. We have the following:
+    \[\parens{\dot{r}\cos t - r\sin t}\parens{\parens{\ddot{r}-r}\sin t + 2\dot{r}\cos t} - \parens{\dot{r}\sin t + r\cos t}\parens{\parens{\ddot{r} - r}\cos t - 2\dot{r}\sin t}\]
+    \[\rightsquigarrow \parens{\dot{r}\cos t - r \sin t}\parens{\ddot{r}\sin t - r\sin t + 2\dot{r}\cos t} - \parens{\dot{r}\sin t + r\cos t}\parens{\ddot{r}\cos t - r\cos t - 2\dot{r}\sin t}\]
+    \begin{multline*}
+        \rightsquigarrow \parens{\ddot{r}\dot{r}\sin t\cos t - \dot{r}r\sin t\cos t + 2\dot{r}^2\cos^2 t - \ddot{r}r\sin^2 t + r^2\sin^2 t - 2\dot{r}r\sin t\cos t} \\
+        - \parens{\ddot{r}\dot{r}\sin t\cos t - \dot{r}r\sin t\cos t + 2\dot{r}^2\sin^2 t + \ddot{r}r\cos^2 t - r^2\cos^2 t - 2\dot{r}r\sin t\cos t}
+    \end{multline*}
+    \[\rightsquigarrow 2\dot{r}^2\cos^2t - \ddot{r}r\sin^2t + r^2\sin^2t + 2\dot{r}^2\sin^2t - \ddot{r}r\cos^2t + r^2\cos^2t\]
+    \[\rightsquigarrow 2\dot{r}^2 - \ddot{r}r + r^2\]
+    So, for the numerator of (\ref{eq:1.3.10}), we have:
+    \[\abs{\dot{q} \times \ddot{q}} = \abs{2\dot{r}^2 + r^2 - r\ddot{r}}\]
+    Now, we compute the denominator of (\ref{eq:1.3.10}). From the first part of this problem, we found that $\abs{\dot{q}}^2 = \dot{r}^2 + r^2$. Then, $\abs{\dot{q}} = \parens{\dot{r}^2 + r^2}^{1/2}$. So, we have for the denominator:
+    \[\abs{\dot{q}}^3 = \parens{\dot{r}^2 + r^2}^{3/2}.\]
+    Putting everything together, we have the following curvature:
+    \[\kappa = \frac{\abs{\dot{q} \times \ddot{q}}}{\abs{\dot{q}}^3} = \frac{\abs{2\dot{r}^2 + r^2 - r\ddot{r}}}{\parens{\dot{r}^2 + r^2}^{3/2}} = \frac{\abs{2\parens{\frac{dr}{dt}}^2 + r^2 - r \frac{d^2r}{dt^2}}}{\parens{\parens{\frac{dr}{dt}}^2 + r^2}^{\frac{3}{2}}}.\]
+}
+
+\section*{Problem 1.3.12}
+Compute the curvature of the logarithmic spiral
+\[ae^{bt} (\cos t, \sin t).\]
+
+\sol{
+    Let $q(t) = ae^{bt}\parens{\cos t, \sin t}$. We use the following formula from Remark 1.3.4 to compute curvature:
+    \begin{equation*}\label{eq:1:3:12}\tag{eq. 1.3.12}
+        \kappa = \frac{\abs{v \times a}}{\abs{v}^3} = \frac{\abs{\dot{q} \times \ddot{q}}}{\abs{\dot{q}}^3}
+    \end{equation*}
+    Compute $\dot{q}$:
+    \[\dot{q} = abe^{bt}\parens{\cos t, \sin t} + ae^{bt}\parens{-\sin t, \cos t}\]
+    \[\rightsquigarrow \dot{q} = \parens{abe^{bt}\cos t - ae^{bt}\sin t,\; abe^{bt}\sin t + ae^{bt}\cos t,\; 0}\]
+    Compute $\ddot{q}$:
+    \begin{align*}
+        \ddot{q} &= ab^2e^{bt}\parens{\cos t, \sin t} + abe^{bt}\parens{-\sin t, \cos t} + abe^{bt}\parens{-\sin t, \cos t} + ae^{bt}\parens{-\cos t, -\sin t} \\
+        &= ab^2e^{bt}\parens{\cos t, \sin t} + 2abe^{bt}\parens{-\sin t, \cos t} + ae^{bt}\parens{-\cos t, -\sin t}
+    \end{align*}
+    \[\rightsquigarrow \ddot{q} = \parens{ab^2e^{bt}\cos t - 2abe^{bt}\sin t - ae^{bt}\cos t,\; ab^2e^{bt}\sin t + 2abe^{bt}\cos t - ae^{bt}\sin t,\; 0}\]
+    Now we compute $\dot{q} \times \ddot{q}$. Since the $z$-component of both $\dot{q}$ and $\ddot{q}$ are $0$, then the $x$ and $y$ components of $\dot{q} \times \ddot{q}$ are $0$. So, we need to compute the $z$-component of $\dot{q} \times \ddot{q}$. We have the following:
+    \begin{multline*}
+        \parens{abe^{bt}\cos t - ae^{bt}\sin t}\parens{ab^2e^{bt}\sin t + 2abe^{bt}\cos t - ae^{bt}\sin t} \\
+        - \parens{abe^{bt}\sin t + ae^{bt}\cos t}\parens{ab^2e^{bt}\cos t - 2abe^{bt}\sin t - ae^{bt}\cos t}
+    \end{multline*}
+    \begin{multline*}
+        \rightsquigarrow (a^2b^3e^{2bt}\sin t\cos t + 2a^2b^2e^{2bt}\cos^2 t - a^2be^{bt}\sin t \cos t - a^2b^2e^{2bt}\sin^2 t \\
+        - 2a^2be^{2bt}\sin t \cos t + a^2e^{2bt}\sin^2 t) \\
+        - (a^2b^3e^{2bt}\sin t\cos t - 2a^2b^2e^{2bt}\sin^2 t - a^2be^{bt}\sin t \cos t - a^2b^2e^{2bt}\cos^2 t \\
+        - 2a^2be^{2bt}\sin t \cos t - a^2e^{2bt}\cos^2 t)
+    \end{multline*}
+    \begin{multline*}
+        \rightsquigarrow 2a^2b^2e^{2bt}\cos^2t - a^2b^2e^{2bt}\sin^2 + a^2e^{2bt}\sin^2t + a^2e^{2bt}\sin^2 t \\
+        + 2a^2b^2e^{2bt}\sin^2 t - a^2b^2e^{2bt}\cos^2 t + a^2e^{2bt}\cos^2 t
+    \end{multline*}
+    \[\rightsquigarrow 2a^2b^2e^{2bt} - a^2b^2e^{2bt} + a^2e^{2bt}\]
+    \[\rightsquigarrow a^2b^2e^{2bt} + a^2e^{2bt}\]
+    \[\rightsquigarrow a^2e^{2bt}\parens{b^2 + 1}\]
+    So, for the numerator of (\ref{eq:1:3:12}), we have:
+    \[\abs{\dot{q} \times \ddot{q}} = a^2e^{2bt}\parens{b^2 + 1}\]
+    Now, we compute the denominator of (\ref{eq:1:3:12}). Since
+    \[\dot{q} = abe^{bt}\parens{\cos t, \sin t} + ae^{bt}\parens{-\sin t, \cos t},\] 
+    \[\abs{\dot{q}}^2 = a^2b^2e^{2bt} + a^2e^{2bt} = a^2e^{2bt}(b^2 + 1).\] 
+    Thus, $\abs{\dot{q}} = ae^{bt}\sqrt{b^2 + 1}$. So, we have for the denominator:
+    \[\abs{\dot{q}}^3 = a^3e^{3bt}\parens{b^2 + 1}^{3/2}.\]
+    Putting everything together, we have the following curvature:
+    \[\kappa = \frac{\abs{\dot{q} \times \ddot{q}}}{\abs{\dot{q}}^3} = \frac{a^2e^{2bt}\parens{b^2 + 1}}{a^3e^{3bt}\parens{b^2 + 1}^{3/2}} = \boxed{\frac{1}{ae^{bt}\sqrt{b^2 + 1}}}.\]
+}
+
+\section*{Problem 2.1.6}
+Show that a planar curve is part of a circle if all its normal lines pass through a fixed point.
+
+\solproof{
+    If all the normal lines of a planar curve pass through a fixed point, then the unit normal is radial. Since $T \perp N$, $T$ is perpendicular to the radial directions. Then, the curve lies on a sphere, and by Problem 1.1.13 from Homework 1, the curve lies on a circle. 
+}
+
+\section*{Problem 2.1.7}
+Show that $\kappa_\pm \frac{ds}{dt} = \det
+\begin{bmatrix}
+    T & \frac{dT}{dt}
+\end{bmatrix}$.
+
+\solproof{
+    From Theorem 2.1.5, we have:
+    \[\frac{dT}{dt} = \kappa_\pm \frac{ds}{dt} N_\pm.\]
+    So, after substitution, we get:
+    \[\det
+    \begin{bmatrix}
+        T & \kappa_\pm \frac{ds}{dt} N_\pm
+    \end{bmatrix}.\]
+    $\kappa_\pm \frac{ds}{dt}$ is a scalar, so using properties of the determinant, we have:
+    \[\kappa_\pm \frac{ds}{dt} \det
+    \begin{bmatrix}
+        T & N_\pm
+    \end{bmatrix}.\]
+    Since $T$ and $N_\pm$ are orthogonal to each other,
+    $\det
+    \begin{bmatrix}
+        T & N_\pm
+    \end{bmatrix} = 1$.
+    Thus, we have $\kappa_\pm \frac{ds}{dt}$. So,
+    \[\det
+    \begin{bmatrix}
+        T & \frac{dT}{dt}
+    \end{bmatrix} = \kappa_\pm \frac{ds}{dt}.\]
+}
+
+\section*{Problem 2.1.9}
+Show that
+\[q(s) = \parens{\int_{s_0}^s \cos(\phi(u))\,{du},\; \int_{s_0}^s \sin(\phi(u))\,{du}},\] 
+is a unit speed curve with $\kappa_\pm = \frac{d\phi}{ds}$.
+
+\solproof{
+    By Proposition 2.1.4, the signed curvature can be calculated using the formula
+    \begin{equation*}
+        \kappa_\pm = \frac{\det \begin{bmatrix} v & a \end{bmatrix}}{\abs{v}^3}.
+    \end{equation*}
+    We first calculate $v(s)$ = $\frac{dq}{ds}(s)$ = $\dot{q}(s)$ using the Fundamental Theorem of Calculus:
+    \begin{align*}
+        v(s) &= \parens{\frac{d}{ds} \int_{s_0}^s \cos\parens{\phi\parens{u}}\,{du},\; \frac{d}{ds} \int_{s_0}^s \sin\parens{\phi\parens{u}}\,{du}} \\
+        &= \parens{\cos\parens{\phi\parens{s}},\; \sin\parens{\phi\parens{s}}}.
+    \end{align*}
+    Now, we calculate $a(s) = \frac{d^2q}{dt^2}(s) = \ddot{q}(s)$:
+    \[a(s) = \parens{-\sin\parens{\phi\parens{s}} \frac{d\phi}{ds},\; \cos\parens{\phi\parens{s}} \frac{d\phi}{ds}}\]
+    Now, we compute $\det \begin{bmatrix} v & a \end{bmatrix}$:
+    \begin{align*}
+        \det \begin{bmatrix} v & a \end{bmatrix} &=
+        \begin{bmatrix}
+            \cos\parens{\phi\parens{s}} & -\frac{d\phi}{ds} \sin\parens{\phi\parens{s}} \\
+            \sin\parens{\phi\parens{s}} & \frac{d\phi}{ds} \cos\parens{\phi\parens{s}} 
+        \end{bmatrix} \\
+        &= \frac{d\phi}{ds} \cos^2\parens{\phi\parens{s}} + \frac{d\phi}{ds} \sin^2\parens{\phi\parens{s}} \\
+        &= \frac{d\phi}{ds}
+    \end{align*}
+    Lastly, we compute $\abs{v}^3$. Since $\abs{v} = 1$, $\abs{v}^3 = 1$.
+    Thus, putting everything together, we have:
+    \[\kappa_\pm = \frac{\det \begin{bmatrix} v & a \end{bmatrix}}{\abs{v}^3} = \frac{\frac{d\phi}{ds}}{1} = \frac{d\phi}{ds}.\]
+}
+
+\section*{Problem 2.1.11}
+For a planar unit speed curve $q(s)$ consider the parallel curve
+\[q_\epsilon = q + \epsilon N_\pm\] 
+for some fixed $\epsilon$.
+\begin{enumerate}[(a)]
+    \item Show that this curve is regular as long as $\epsilon\kappa_\pm \neq 1$.
+    \item Show that this curvature is \[\frac{\kappa_\pm}{\abs{1 - \epsilon\kappa_\pm}}.\]
+\end{enumerate}
+
+\solproof{
+    \begin{enumerate}[(a)]
+        \item We begin by calculating $\frac{dq_\epsilon}{ds}$:
+        \[\frac{dq_\epsilon}{ds} = \frac{dq}{ds} + \frac{d}{ds}\parens{\epsilon N_\pm}\]
+        By Theorem 2.1.5, $\frac{dq}{ds} = T$ and $\frac{dN_\pm}{ds} = -\kappa_\pm T$. Thus, making the substitutions and simplifying, we get:
+        \begin{align*}
+            \frac{dq_\epsilon}{ds} &= T + \epsilon \frac{dN_\pm}{ds} \\
+            &= T + \epsilon\parens{-\kappa_\pm}T \\
+            &= T - T\epsilon\kappa_\pm
+        \end{align*}
+        If $q_\epsilon$ is \emph{not} regular, then $\frac{dq_\epsilon}{ds} = T - T\epsilon\kappa_\pm = T\parens{1 - \epsilon\kappa_\pm} = 0$. That is, when $\epsilon\kappa_\pm = 1$, $q_\epsilon$ is \emph{not} regular. Therefore, $q_\epsilon$ \textbf{is regular} as long as $\epsilon\kappa_\pm \neq 1$. \hfill \qed
+        \item We will calculate the curvature using the formula from Proposition 2.1.4:
+        \[\kappa_\pm = \frac{\det \begin{bmatrix} v & a \end{bmatrix}}{\abs{v}^3}\]
+        From part (a), we have shown that $v(s) = \frac{dq_\epsilon}{ds} = T - T\epsilon\kappa_\pm = T\parens{1 - \epsilon\kappa_\pm}$. Next, we calculate $a(s) = \frac{d^2q_\epsilon}{ds}$:
+        \begin{align*}
+            a(s) = \frac{d^2q_\epsilon}{ds} &= \frac{dT}{ds} - \frac{d}{ds}\parens{T\epsilon\kappa_\pm} \\
+            &= \frac{dT}{ds} - \epsilon\kappa_\pm \frac{dT}{ds}
+        \end{align*}
+        By Theorem 2.1.5, since $\frac{dT}{ds} = \kappa_\pm N_\pm$, we have then:
+        \[a(s) = \kappa_\pm N_\pm - \epsilon \kappa_\pm^2 N_\pm = \kappa_\pm N_\pm\parens{1 - \epsilon\kappa_\pm}.\]
+        Now, we will calculate $\abs{v\parens{s}}^3$. Since
+        \[\abs{v\parens{s}}^2 = \parens{1 - \epsilon\kappa_\pm}^2, \quad \text{($T^2$ = 1 because $T$ is a unit vector)},\]
+        \[\abs{v\parens{s}} = \abs{1 - \epsilon\kappa_\pm}.\]
+        Thus,
+        \[\abs{v\parens{s}}^3 = \abs{1 - \epsilon\kappa_\pm}^3.\]
+        Now, we calculate $\det \begin{bmatrix} v & a \end{bmatrix}$, using determinant properties and that $\det \begin{bmatrix} T & N_\pm \end{bmatrix} = 1$ :
+        \begin{align*}
+            \det \begin{bmatrix} v & a \end{bmatrix} &= 
+            \begin{bmatrix}
+                T\parens{1 - \epsilon\kappa_\pm} & \kappa_\pm N_\pm\parens{1 - \epsilon\kappa_\pm}
+            \end{bmatrix} \\
+            &= \kappa_\pm\parens{1 - \epsilon\kappa_\pm}^2 \det \begin{bmatrix} T & N_\pm \end{bmatrix} \\
+            &= \kappa_\pm\parens{1 - \epsilon\kappa_\pm}^2 \\
+            &= \kappa_\pm \abs{v\parens{s}}^2
+        \end{align*}
+        Thus, putting everything together:
+        \begin{align*}
+            \kappa_\pm = \frac{\det \begin{bmatrix} v & a \end{bmatrix}}{\abs{v}^3} &= \frac{\kappa_\pm \abs{v}^2}{\abs{v}^3} \\
+            &= \frac{\kappa_\pm}{\abs{v}} \\
+            &= \frac{\kappa_\pm}{\abs{1 - \epsilon\kappa_\pm}}.
+        \end{align*}
+    \end{enumerate}
+}
+
+\end{document}
