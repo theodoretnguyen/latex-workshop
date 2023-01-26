@@ -31,7 +31,7 @@
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
 
-\title{170E Study Guide}
+\title{170E Review Sheet}
 \author{Theodore Nguyen}
 \date{UCLA Winter 2022 \\ Professor Harrop-Griffiths}
 
@@ -50,7 +50,7 @@
 
 \begin{defn}
     Probability theory takes place inside a \bfred{probability space} ($\Omega, \mathcal{F}, \PP$).
-    
+
     \noindent This consists of three objects:
     \begin{enumerate}[1.]
         \item A non-empty set $\Omega$, called the \bfred{sample space}. \emph{(All possible outcomes of an experiment)}
@@ -95,7 +95,7 @@
 \end{thm}
 
 \begin{thm}
-    If $A, B, C \subseteq \Omega$ are events then 
+    If $A, B, C \subseteq \Omega$ are events then
     \begin{align*}
         \PP[A \cup B \cup C] = \ &\PP[A] + \PP[B] + \PP[C] \\
         &-\PP[A \cap B] - \PP[B \cap C] - \PP[C \cap A] \\
@@ -189,7 +189,7 @@
     \begin{itemize}
         \item $n_1$ objects of type 1,
         \item $n_2$ objects of type 2,
-        \item \ldots 
+        \item \ldots
         \item $n_r$ objects of type $r$.
     \end{itemize}
 
@@ -262,7 +262,7 @@
         \item []
         \item Given a set $S$, a \bfred{random variable} is a function $X: \Omega \rightarrow S$ satisfying certain properties.
         \item For the sake of this class, we can assume that all functions $X: \Omega \rightarrow S$ are random variables.
-        \item \underline{Notation}: if $x \in S$ and $A \subseteq S$ 
+        \item \underline{Notation}: if $x \in S$ and $A \subseteq S$
         \begin{align*}
             \PP[X = x] &= \PP[\{\omega \in \Omega : X(\omega) = x\}] \\
             \PP[X \in A] &= \PP[\{\omega \in \Omega : X(\omega) \in A\}]
@@ -282,7 +282,7 @@
     Let $X$ be a discrete random variable taking values in a countable set $S \subseteq \R$.
     \begin{itemize}
         \item We define the \bfred{probability mass function} (PMF) of $X$ to be the function $p_X: S \rightarrow [0, 1]$ given by \[p_X(x) = \PP[X = x]\]
-        \item We define the \bfred{cumulative distribution function} (CDF) of $X$ to be the function $F_X: \R \rightarrow [0, 1]$ given by \[F_X(x) = \PP[X \leq x]\] 
+        \item We define the \bfred{cumulative distribution function} (CDF) of $X$ to be the function $F_X: \R \rightarrow [0, 1]$ given by \[F_X(x) = \PP[X \leq x]\]
         \item We say that two random variables $X, Y$ are \bfred{identically distributed} if they have the same CDF and write $X \sim Y$.
     \end{itemize}
 \end{defn}
@@ -294,7 +294,7 @@
     \begin{itemize}
         \item Let $m \geq 1$.
         \item We say that a discrete random variable $X$ is \bfred{uniformly distributed} on $\{\, 1, 2, \dotsc, m \,\}$ and write $X \sim \text{Uniform}(\{\, 1, 2, \dotsc, m \,\})$ if it has PMF \[\PP[X=x] = p_X(x) = \frac{1}{m} \ \text{if} \ x \in \{\,1, 2, 3, \dotsc, m\,\}\]
-        \item If $X \sim \text{Uniform}(\{\, 1, 2, \dotsc, m \,\})$ then it has CDF \[F_X(x) = 
+        \item If $X \sim \text{Uniform}(\{\, 1, 2, \dotsc, m \,\})$ then it has CDF \[F_X(x) =
         \begin{cases}
             0 \quad &\text{if} \ x < 1 \\
             \frac{k}{m} \quad &\text{if} \ x < k + 1 \quad \text{and} \quad k \in \{\,1, 2, \dotsc, m-1\,\} \\
@@ -306,7 +306,7 @@
 \begin{thm}
     If $X$ is a discrete random variable taking values in a countable set $S \subseteq \R$ and $A \subseteq \R$ is any set then \[\PP[X \in A] = \sum_{x \in A \cap S}p_X(x)\]
 \end{thm}
-    
+
 \begin{thm}
     If $X$ is a discrete random variable taking values in a countable set $S \subseteq \R$ then \[F_X(x) = \sum_{\substack{y \leq x \\ y \in S}} p_X(y)\]
 \end{thm}
@@ -347,7 +347,7 @@
 \begin{tcolorbox}[title = Bernoulli Random Variable, colback = SkyBlue!5!white,colframe = SkyBlue!75!black]
     \begin{itemize}
         \item Let $p \in (0, 1)$.
-        \item We say that  discrete random variable $X$ is a \bfred{Bernoulli random variable} and write $X \sim \text{Bernoulli}(p)$ if it has PMF \[p_X(x) = 
+        \item We say that  discrete random variable $X$ is a \bfred{Bernoulli random variable} and write $X \sim \text{Bernoulli}(p)$ if it has PMF \[p_X(x) =
         \begin{cases}
             p \quad &\text{if} \quad x = 1 \\
             1- p \quad &\text{if} \quad x = 0
@@ -527,7 +527,7 @@
 \end{thm}
 
 \begin{thm}
-    If $X \sim \text{Negative Binomial}(r,p)$ then 
+    If $X \sim \text{Negative Binomial}(r,p)$ then
     \begin{align*}
         \E[X] &= \frac{r}{p} \\
         \var(X) &= \frac{r(1-p)}{p^2}
@@ -582,7 +582,7 @@
 \begin{defn}
     \begin{itemize}
         \item []
-        \item Let $X: \Omega \rightarrow \R$ be a random variable 
+        \item Let $X: \Omega \rightarrow \R$ be a random variable
         \item We say that $X$ is a \bfred{continuous random variable} if there exists a non-negative integrable function $f_X:\R\rightarrow[0,\infty)$ so that \[F_X(x)=\int_{-\infty}^xf_X(t)\,dt\] Note that this ensures that \underline{$F_X(x)$ is continuous}.
         \item We call $f_X(x)$ a \bfred{probability density function} for $X$.
     \end{itemize}
@@ -618,7 +618,7 @@
 \end{tcolorbox}
 
 \begin{thm}
-    If $a<b$ and $X \sim \text{Uniform}([a,b])$ then it has PDF \[f_X(x) = 
+    If $a<b$ and $X \sim \text{Uniform}([a,b])$ then it has PDF \[f_X(x) =
     \begin{cases}
         \frac{1}{b-a} \quad &\text{if} \quad x\in(a,b) \\
         0 \quad &\text{otherwise}
@@ -632,7 +632,7 @@
 \begin{defn}
     \begin{itemize}
         \item []
-        \item If $X$ is a continuous random variable with PDF $f_X(x)$ we define its \bfred{expected value} to be \[\E[X]=\int_{-\infty}^\infty xf_X(x)\,dx\] 
+        \item If $X$ is a continuous random variable with PDF $f_X(x)$ we define its \bfred{expected value} to be \[\E[X]=\int_{-\infty}^\infty xf_X(x)\,dx\]
         \item We still use the notation $\mu_X=\E[X]$
         \item More generally, if $g:\R\rightarrow\R$ is any function, we define \[\E[g(X)]=\int_{-\infty}^\infty g(x)f_X(x)\,dx\]
     \end{itemize}
@@ -641,8 +641,8 @@
 \begin{thm}
     Let $X$ be a continuous random variable.
     \begin{itemize}
-        \item If $a \in \R$ is a constant then \[\E[a]=a\] 
-        \item If $a,b\in\R$ are constants and $g,h:\R\rightarrow\R$ then \[\E[a\,g(X)+b\,h(X)]=a\,\E[g(X)]+b\,\E[h(x)]\] 
+        \item If $a \in \R$ is a constant then \[\E[a]=a\]
+        \item If $a,b\in\R$ are constants and $g,h:\R\rightarrow\R$ then \[\E[a\,g(X)+b\,h(X)]=a\,\E[g(X)]+b\,\E[h(x)]\]
         \item If $g(x)\leq h(x)$ for all $x\in\R$ then \[\E[g(X)]\leq\E[h(X)]\]
     \end{itemize}
 \end{thm}
@@ -655,7 +655,7 @@
 \begin{defn}
     \begin{itemize}
         \item[]
-        \item If $X$ is a continuous random variable we define its \bfred{variance} to be \[\var(X)=\E\Big[(X-\E[X])^2\Big]\] 
+        \item If $X$ is a continuous random variable we define its \bfred{variance} to be \[\var(X)=\E\Big[(X-\E[X])^2\Big]\]
         \item We still use the notation $\sigma_X^2=\var(X)$ and define the \bfred{standard deviation} to be $\sigma_X=\sqrt{\var(X)}$.
     \end{itemize}
 \end{defn}
@@ -741,7 +741,7 @@
     \begin{itemize}
         \item []
         \item $\Gamma(1)=1$
-        \item For $\alpha>1$ we have \[\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)\] 
+        \item For $\alpha>1$ we have \[\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)\]
         \item If $\alpha\geq 1$ is an integer then \[\Gamma(a)=(\alpha-1)!\]
     \end{itemize}
 \end{thm}
@@ -798,7 +798,7 @@
 
 \begin{tcolorbox}[title = Normal Distribution, colback = SkyBlue!5!white,colframe = SkyBlue!75!black]
     \begin{itemize}
-        \item We say a continuous random variable $X$ is \bfred{normally distributed} with mean $\mu$ and variance $\sigma^2$ if it has PDF \[f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad \text{for} \quad x\in\R\] 
+        \item We say a continuous random variable $X$ is \bfred{normally distributed} with mean $\mu$ and variance $\sigma^2$ if it has PDF \[f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad \text{for} \quad x\in\R\]
         \item We write $X\sim\mathcal{N}(\mu,\sigma^2)$.
         \item If $\mu=0$ and $\sigma^2=1$ we say that $X$ is a \bfred{standard normal} random variable.
     \end{itemize}
@@ -849,7 +849,7 @@
     \begin{itemize}
         \item []
         \item Let $X,Y$ be a pair of discrete random variables taking values in sets $S_X,S_Y\subseteq\R$.
-        \item We think of $(X,Y)$ as being a random point in $\R^2$ taking values in the set \[S=S_X\times S_Y=\{\,(x,y):x\in S_X \ \text{and} \ y\in S_y\,\}\] 
+        \item We think of $(X,Y)$ as being a random point in $\R^2$ taking values in the set \[S=S_X\times S_Y=\{\,(x,y):x\in S_X \ \text{and} \ y\in S_y\,\}\]
         \item We define the \bfred{joint probability mass function} of $X,Y$ to be the function $p_{X,Y}$: $S\rightarrow[0,1]$ by \[p_{X,Y}(x,y)=\PP[X=x,Y=y]=\PP[(X,Y)=(x,y)]\]
     \end{itemize}
 \end{defn}
@@ -866,7 +866,7 @@
     \begin{itemize}
         \item []
         \item Let $X,Y$ be discrete random variables taking values in sets $S_X,S_Y\subseteq\R$.
-        \item We define the \bfred{marginal probability mass function of $X$} to be the function $p_X:S_X\rightarrow[0,1]$ given by \[p_X(x)=\PP[X=x]\] 
+        \item We define the \bfred{marginal probability mass function of $X$} to be the function $p_X:S_X\rightarrow[0,1]$ given by \[p_X(x)=\PP[X=x]\]
         \item We define the \bfred{marginal probability mass function of $Y$} to be the function $p_Y:S_Y\rightarrow[0,1]$ given by \[p_Y(y)=\PP[Y=y]\]
     \end{itemize}
 \end{defn}
@@ -932,7 +932,7 @@
     \begin{itemize}
         \item []
         \item Let $X,Y$ be a pair of (discrete) random variables.
-        \item We define the \bfred{covariance} of $X,Y$ to be \[\cov(X,Y)=\E\bigr[(X-\E[X])(Y-\E[Y])\bigr]\] 
+        \item We define the \bfred{covariance} of $X,Y$ to be \[\cov(X,Y)=\E\bigr[(X-\E[X])(Y-\E[Y])\bigr]\]
         \item We use the notation $\sigma_{XY}=\cov(X,Y)$.
     \end{itemize}
 \end{defn}
@@ -978,12 +978,12 @@
     \begin{itemize}
         \item []
         \item Let $X,Y$ be a pair of discrete random variables taking values in sets $S_X,S_Y\subseteq\R$.
-        \item If $y\in S_Y$, we define the \bfred{random variable $X|y$} with PMF 
+        \item If $y\in S_Y$, we define the \bfred{random variable $X|y$} with PMF
         \begin{align*}
             p_{X|Y}(x|y) &= \PP[X=x|Y=y]\quad\text{for}\quad x\in S_X \\
             &= \frac{p_{X,Y}(x,y)}{p_Y(y)}\quad\text{[provided $p_Y(y)\neq 0$]}
         \end{align*}
-        \item If $x\in S_X$, we define the \bfred{random variable $Y|x$} with PMF 
+        \item If $x\in S_X$, we define the \bfred{random variable $Y|x$} with PMF
         \begin{align*}
             p_{Y|X}(y|x) &= \PP[Y=y|X=x]\quad\text{for}\quad y\in S_Y \\
             &= \frac{p_{X,Y}(x,y)}{p_X(x)}\quad\text{[provided $p_X(x)\neq 0$]}
@@ -1003,8 +1003,8 @@
     \begin{itemize}
         \item []
         \item Let $X,Y$ be discrete random variables taking values in sets $S_X,S_Y\subseteq\R$.
-        \item Define the function $g:S_X\rightarrow\R$ by \[g(x)=\E[Y|x]\] 
-        \item We define the \bfred{conditional expectation} of $Y$ conditioned on $X$ to be the \bfred{random variable} \[\E[Y|X]=g(X)\] 
+        \item Define the function $g:S_X\rightarrow\R$ by \[g(x)=\E[Y|x]\]
+        \item We define the \bfred{conditional expectation} of $Y$ conditioned on $X$ to be the \bfred{random variable} \[\E[Y|X]=g(X)\]
         \item Can similarly define \[\E[X|Y]\]
     \end{itemize}
 \end{defn}
@@ -1017,8 +1017,8 @@
     \begin{itemize}
         \item []
         \item Let $X,Y$ be discrete random variables taking values in sets $S_X,S_Y\subseteq\R$.
-        \item Define the function $h:S_X\rightarrow\R$ by \[h(x)=\var(Y|x)\] 
-        \item We define the \bfred{conditional variance} of $Y$ conditioned on $X$ to be the \bfred{random variable} \[\var(Y|X)=h(X)\] 
+        \item Define the function $h:S_X\rightarrow\R$ by \[h(x)=\var(Y|x)\]
+        \item We define the \bfred{conditional variance} of $Y$ conditioned on $X$ to be the \bfred{random variable} \[\var(Y|X)=h(X)\]
         \item Can similarly define $\var(X|Y)$
     \end{itemize}
 \end{defn}
@@ -1066,7 +1066,7 @@
 \end{thm}
 
 \begin{thm}
-    Let $X,Y$ be continuous random variables with joint PDF $f_{X,Y}(x,y)$ and marginal PDFs $f_X(x)$, $f_Y(y)$. Then if $g,h:\R\rightarrow\R$ we have 
+    Let $X,Y$ be continuous random variables with joint PDF $f_{X,Y}(x,y)$ and marginal PDFs $f_X(x)$, $f_Y(y)$. Then if $g,h:\R\rightarrow\R$ we have
     \begin{align*}
         \E[g(X)] &= \int_{-\infty}^{\infty}g(x)\,f_X(x)\,dx \\
         \E[h(Y)] &= \int_{-\infty}^{\infty}h(y)\,f_Y(y)\,dy
@@ -1113,7 +1113,7 @@
         \item []
         \item Let $X,Y$ be continuous random variables.
         \item Let $g(x) = \E[Y|x]$
-        \item We define the \bfred{conditional expectation} to be the \bfred{random variable} \[\E[Y|X]=g(X)\] 
+        \item We define the \bfred{conditional expectation} to be the \bfred{random variable} \[\E[Y|X]=g(X)\]
         \item We have the \bfred{Law of Iterated Expectation}: \[\E\bigr[\E[Y|X]\bigr]=\E[Y]\]
     \end{itemize}
 \end{defn}
@@ -1222,8 +1222,8 @@
 \end{thm}
 
 \begin{thm}
-    Let $X_1,X_2,\dotsc,X_n$ be \bfred{independent} discrete or continuous random variables. 
-    
+    Let $X_1,X_2,\dotsc,X_n$ be \bfred{independent} discrete or continuous random variables.
+
     \noindent Let $a_1, a_2,\dotsc, a_n\in\R$ and let \[Y=a_1X_1+\dotsb+a_nX_n\] Then \[\var(Y)=a_1^2\var(X_1)+\dotsb+a_n^2\var(X_n)\]
 \end{thm}
 
@@ -1247,7 +1247,7 @@
 \begin{defn}[Convergence of Random Variables]
     \begin{itemize}
         \item []
-        \item Let $(X_n)_{n\geq1}$ be a sequence of random variables and $X$ be another random variable 
+        \item Let $(X_n)_{n\geq1}$ be a sequence of random variables and $X$ be another random variable
         \item There are \bfred{several types of convergence} for random variables
         \item We say that \[X_n\rightarrow X \quad \text{\bfred{in probability} as} \quad n\rightarrow\infty\] if, given any $\varepsilon>0$ we have \[\PP\bigr[|X_n-X|\geq\varepsilon\bigr]\rightarrow 0 \quad \text{as} \quad n\rightarrow\infty\]
     \end{itemize}
@@ -1283,7 +1283,7 @@
 \subsection{The MGF Technique}
 
 \begin{thm}
-    Let $X_1,X_2,\dotsc,X_n$ be a sequence of \bfred{independent} random variables and $a_1,a_2,\dotsc,a_n\in\R$. Let 
+    Let $X_1,X_2,\dotsc,X_n$ be a sequence of \bfred{independent} random variables and $a_1,a_2,\dotsc,a_n\in\R$. Let
     \[Y=\sum_{j=1}^na_jX_j\] Then $Y$ has MGF \[M_Y(t)=\prod_{j=1}^nM_{X_j}(a_jt)\] whenever it is well-defined.
 \end{thm}
 
